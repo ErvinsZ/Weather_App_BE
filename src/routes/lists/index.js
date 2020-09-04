@@ -20,6 +20,17 @@ router.get("/:username", async(req, res, next)=>{
     }
 })
 
+router.post("/:username/", async (req, res, next) => {
+    try{
+     const newList = new ListModel(req.body)
+     const response = await newList.save()
+     res.status(201).send(response)
+    }catch(error){
+     next(error)
+    }
+     
+  })
+
 
 
 module.exports = router
