@@ -6,9 +6,9 @@ const UserModel = require("../authorization/schema")
 router.get("/:username", async(req, res, next)=>{
     try {
         const username = req.params.username
-        const user = await UserModel.findOne(username)
-        if (user) {
-            res.send(user)
+        const city = await ListModel.findOne(username)
+        if (city) {
+            res.send(city)
           } else {
             const error = new Error()
             error.httpStatusCode = 404
