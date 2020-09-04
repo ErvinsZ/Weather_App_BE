@@ -5,6 +5,7 @@ const { join } = require("path");
 const mongoose = require("mongoose");
 // const apiRoutes = require("./routes/api");
 const authorizeRoutes = require("./routes/authorization");
+const listRoutes = require("../src/routes/lists")
 const { notFound, badRequest, generalError } = require("./errorHandlers.js");
 const { verifyToken } = require("./routes/authorization/util");
 const helmet = require("helmet");
@@ -33,6 +34,7 @@ server.use(express.static(publicPath));
 
 // server.use("/api", apiRoutes);
 server.use("/user", authorizeRoutes);
+server.use("/lists", listRoutes)
 
 server.use(notFound);
 server.use(badRequest);
